@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Job {
+  upworkJobId    String   @id
+  title          String
+  descriptionHash String
+  budget         Int?
+  type           String
+  clientCountry  String?
+  clientSpend    Int?
+  paymentVerified Boolean
+  postedAt       DateTime
+  score          Int?
+  reason         String?
+  notifiedAt     DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Meta {
+  key   String @id
+  value String
+}
